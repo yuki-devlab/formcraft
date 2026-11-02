@@ -27,6 +27,10 @@ FORMCRAFT_APPS_SCRIPT_SECRET = os.environ.get(
     "",
 )
 
+GOOGLE_TOKEN_JSON = os.environ.get(
+    "GOOGLE_TOKEN_JSON",
+    "",
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/

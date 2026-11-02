@@ -22,24 +22,58 @@ TOKEN_FILE = (
 
 
 def load_credentials():
-    if not TOKEN_FILE.exists():
-        raise FileNotFoundError(
-            "google_token.jsonが見つかりません。"
-            "先にauthorize_google.pyを実行してください。"
+    token_json = settings.GOOGLE_TOKEN_JSON.strip()
+
+    uses_environment = bool(token_json)
+
+    if uses_environment:
+        try:
+            token_info = json.loads(token_json)
+        except json.JSONDecodeError as error:
+            raise RuntimeError(
+                "GOOGLE_TOKEN_JSONが"
+                "正しいJSONではありません。"
+            ) from error
+
+        if not isinstance(token_info, dict):
+            raise RuntimeError(
+                "GOOGLE_TOKEN_JSONの形式が"
+                "正しくありません。"
+            )
+
+        credentials = (
+            Credentials.from_authorized_user_info(
+                token_info,
+                SCOPES,
+            )
         )
 
-    credentials = Credentials.from_authorized_user_file(
-        TOKEN_FILE,
-        SCOPES,
-    )
+    else:
+        if not TOKEN_FILE.exists():
+            raise FileNotFoundError(
+                "google_token.jsonが見つかりません。"
+                "先にauthorize_google.pyを"
+                "実行してください。"
+            )
 
-    if credentials.expired and credentials.refresh_token:
+        credentials = (
+            Credentials.from_authorized_user_file(
+                TOKEN_FILE,
+                SCOPES,
+            )
+        )
+
+    if (
+        credentials.expired
+        and credentials.refresh_token
+    ):
         credentials.refresh(GoogleRequest())
 
-        TOKEN_FILE.write_text(
-            credentials.to_json(),
-            encoding="utf-8",
-        )
+        if not uses_environment:
+            TOKEN_FILE.write_text(
+                credentials.to_json(),
+                encoding="utf-8",
+            )
 
     if not credentials.valid:
         raise RuntimeError(
