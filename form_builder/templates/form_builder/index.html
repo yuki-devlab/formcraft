@@ -21,7 +21,9 @@
             }
 
             @utility text-trim-safe {
-                text-box: trim-both text;
+                text-box: trim-both cap alphabetic;
+                padding-block: 3px;
+                margin-block: -3px;
             }
         </style>
     </head>
@@ -38,6 +40,7 @@
                     <form
                         method="post"
                         id="builder-form"
+                        data-has-result="{{ result|yesno:'true,false' }}"
                         class="flex flex-col gap-8 p-6 rounded-3xl bg-white border border-slate-200 md:p-8"
                     >
                         {% csrf_token %}
@@ -241,9 +244,20 @@
                 );
             }
 
-            form.addEventListener("input", updateSubmitButton);
+            const hasResult = (
+                form.dataset.hasResult === "true"
+            );
 
-            updateSubmitButton();
+            if (hasResult) {
+                button.disabled = true;
+            } else {
+                form.addEventListener(
+                    "input",
+                    updateSubmitButton,
+                );
+
+                updateSubmitButton();
+            }
 
             form.addEventListener("submit", () => {
                 button.disabled = true;
