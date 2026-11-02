@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FormCraft</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <style type="text/tailwindcss">
+            @theme {
+                --font-sans:
+                    "Inter",
+                    "Noto Sans JP",
+                    system-ui,
+                    sans-serif;
+            }
+
+            @utility text-trim {
+                text-box: trim-both cap alphabetic;
+            }
+
+            @utility text-trim-safe {
+                text-box: trim-both text;
+            }
+        </style>
+    </head>
+    <body class="min-h-screen bg-slate-50 font-sans text-slate-800">
+        <div class="flex justify-center px-4 pt-12 pb-10 min-h-screen md:px-8 md:pt-20 lg:px-0">
+            <div class="flex flex-col gap-10 w-full lg:max-w-3xl">
+                <div class="flex flex-col gap-6">
+                    <div class="w-40 h-10 bg-[#D9D9D9]"></div>
+                    <p class="text-trim text-slate-500">
+                       必要な情報を入力するだけで、Googleフォーム・Googleスプレッドシートの作成からメール通知の設定まで、すべてを自動で行います。
+                    </p>
+                </div>
+                <div class="flex flex-col gap-8">
+                    <form
+                        method="post"
+                        id="builder-form"
+                        class="flex flex-col gap-8 p-6 rounded-3xl bg-white border border-slate-200 md:p-8"
+                    >
+                        {% csrf_token %}
+
+                        <div class="flex flex-col gap-3 pb-8 border-b border-slate-200">
+                            <div class="flex items-center gap-2">
+                                <span class="flex w-7 h-7 items-center justify-center rounded-full bg-slate-300 font-bold text-trim text-white">
+                                    1
+                                </span>
+                                <h2 class="flex-1 font-semibold text-xl text-trim">
+                                    フォームの設定
+                                </h2>
+                            </div>
+                            <p class="pl-9 text-sm text-trim text-slate-500">
+                                ここで設定した情報は、あとからでも変更できます。
+                            </p>
+                        </div>
+                        <div class="flex flex-col gap-6">
+                            <div class="flex flex-col gap-2">
+                                <label
+                                    for="form-name"
+                                    class="flex items-center gap-2 font-semibold text-trim"
+                                >
+                                    フォーム名
+                                    <span class="p-2 rounded-md bg-red-50 text-xs text-trim text-red-500">
+                                        必須
+                                    </span>
+                                </label>
+                                <input
+                                    id="form-name"
+                                    name="form_name"
+                                    type="text"
+                                    maxlength="100"
+                                    required
+                                    placeholder="フォーム名を入力してください"
+                                    value="{{ form.form_name.value|default_if_none:'' }}"
+                                    class="h-14 px-5 rounded-xl bg-white border border-slate-300 outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-500 placeholder:text-slate-500"
+                                >
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label
+                                    for="description"
+                                    class="flex items-center gap-2 font-semibold text-trim"
+                                >
+                                    説明文
+                                    <span class="p-2 rounded-md bg-slate-100 text-xs text-trim text-slate-500">
+                                        任意
+                                    </span>
+                                </label>
+                                <textarea
+                                    id="description"
+                                    name="description"
+                                    maxlength="500"
+                                    placeholder="説明文を入力してください"
+                                    class="min-h-32 p-5 rounded-xl bg-white border border-slate-300 field-sizing-content outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-500 placeholder:text-slate-500"
+                                >{{ form.description.value|default_if_none:'' }}</textarea>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label
+                                    for="notification-emails"
+                                    class="flex items-center gap-2 font-semibold text-trim"
+                                >
+                                    通知先メールアドレス
+                                    <span class="p-2 rounded-md bg-red-50 text-xs text-trim text-red-500">
+                                        必須
+                                    </span>
+                                </label>
+                                <div class="flex flex-col gap-3">
+                                    <input
+                                        id="notification-emails"
+                                        name="notification_emails"
+                                        type="email"
+                                        maxlength="2558"
+                                        multiple
+                                        required
+                                        placeholder="通知先メールアドレスを入力してください"
+                                        value="{{ form.notification_emails.value|default_if_none:'' }}"
+                                        class="h-14 px-5 rounded-xl bg-white border border-slate-300 outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-500 placeholder:text-slate-500"
+                                    >
+                                    <p class="text-xs text-trim text-slate-500">
+                                        複数人で通知を受け取りたい場合は、カンマ（半角）で区切って入力してください。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            type="submit"
+                            id="submit-button"
+                            disabled
+                            class="flex items-center justify-center h-14 gap-2 rounded-xl bg-sky-500 font-semibold enabled:hover:bg-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            <span
+                                id="submit-label"
+                                class="text-trim text-white"
+                            >
+                                フォームを作成する
+                            </span>
+                            <span
+                                id="submit-spinner"
+                                class="hidden w-4 h-4 rounded-full border-2 border-white/50 border-t-white animate-spin"
+                            ></span>
+                        </button>
+                    </form>
+                    {% if result %}
+                        <div class="flex flex-col gap-8 p-6 rounded-3xl bg-white border border-slate-200 md:p-8">
+                            <div class="flex flex-col gap-3 pb-8 border-b border-slate-200">
+                                <div class="flex items-center gap-2">
+                                    <span class="flex w-7 h-7 items-center justify-center rounded-full bg-slate-300 font-bold text-trim text-white">
+                                        2
+                                    </span>
+                                    <h2 class="flex-1 font-semibold text-xl text-trim">
+                                        作成結果
+                                    </h2>
+                                </div>
+                                <p class="pl-9 text-sm text-trim text-slate-500">
+                                    以下のリンクから、作成されたGoogleフォームやGoogleスプレッドシートなどを確認できます。
+                                </p>
+                            </div>
+                            <div class="flex flex-col gap-4">
+                                <a
+                                    href="{{ result.form_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex flex-col gap-3 p-5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 transition-colors"
+                                >
+                                    <span class="font-semibold text-trim">
+                                        Googleフォーム
+                                    </span>
+                                    <span class="text-xs truncate text-slate-500 text-trim-safe">
+                                        {{ result.form_url }}
+                                    </span>
+                                </a>
+                                <a
+                                    href="{{ result.edit_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex flex-col gap-3 p-5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 transition-colors"
+                                >
+                                    <span class="font-semibold text-trim">
+                                        Googleフォーム（編集）
+                                    </span>
+                                    <span class="text-xs truncate text-slate-500 text-trim-safe">
+                                        {{ result.edit_url }}
+                                    </span>
+                                </a>
+                                {% if result.spreadsheet_url %}
+                                    <a
+                                        href="{{ result.spreadsheet_url }}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="flex flex-col gap-3 p-5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 transition-colors"
+                                    >
+                                        <span class="font-semibold text-trim">
+                                            Googleスプレッドシート
+                                        </span>
+                                        <span class="text-xs truncate text-slate-500 text-trim-safe">
+                                            {{ result.spreadsheet_url }}
+                                        </span>
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <a
+                                href="{% url 'builder' %}"
+                                class="flex h-14 items-center justify-center rounded-xl bg-slate-200 font-semibold text-trim hover:bg-slate-300/75 transition-colors"
+                            >
+                                新しいフォームを作成する
+                        </a>
+                        </div>
+                    {% endif %}
+                </div>
+                <small class="text-center text-xs text-trim text-slate-500">
+                    &copy; 2026 FormCraft
+                </small>
+            </div>
+        </div>
+
+        <script>
+            const form = document.querySelector("#builder-form");
+            const button = document.querySelector("#submit-button");
+            const label = document.querySelector("#submit-label");
+            const spinner = document.querySelector("#submit-spinner");
+
+            const requiredFields = [
+                document.querySelector("#form-name"),
+                document.querySelector("#notification-emails"),
+            ];
+
+            function updateSubmitButton() {
+                const emails = document
+                    .querySelector("#notification-emails")
+                    .value
+                    .split(",")
+                    .map((email) => email.trim())
+                    .filter(Boolean);
+
+                const hasValidEmailCount = emails.length <= 10;
+
+                button.disabled = (
+                    !form.checkValidity()
+                    || !hasValidEmailCount
+                );
+            }
+
+            form.addEventListener("input", updateSubmitButton);
+
+            updateSubmitButton();
+
+            form.addEventListener("submit", () => {
+                button.disabled = true;
+                label.textContent = "フォームを作成中…";
+                spinner.classList.remove("hidden");
+            });
+        </script>
+    </body>
+</html>
