@@ -31,13 +31,38 @@ FORMCRAFT_APPS_SCRIPT_SECRET = os.environ.get(
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!ne%z8^suomp44kb&3&oi)$$)8zuw4cek-fwra58)itce^&2d1'
+IS_VERCEL = (
+    os.environ.get("VERCEL") == "1"
+)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-local-development-only",
+)
 
-ALLOWED_HOSTS = []
+DEBUG = not IS_VERCEL
+
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = []
+
+for environment_name in (
+    "VERCEL_URL",
+    "VERCEL_PROJECT_PRODUCTION_URL",
+):
+    vercel_host = os.environ.get(
+        environment_name
+    )
+
+    if vercel_host:
+        ALLOWED_HOSTS.append(vercel_host)
+
+        CSRF_TRUSTED_ORIGINS.append(
+            f"https://{vercel_host}"
+        )
 
 
 # Application definition
