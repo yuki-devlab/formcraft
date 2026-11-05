@@ -1,0 +1,25 @@
+{
+  "name": "formcraft",
+  "version": "1.0.0",
+  "description": "必要な情報を入力するだけで、Googleフォーム・回答保存用のGoogleスプレッドシート・回答通知をまとめて設定できるWebアプリです。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuki-devlab/formcraft.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yuki-devlab/formcraft/issues"
+  },
+  "homepage": "https://github.com/yuki-devlab/formcraft#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.4",
+    "tailwindcss": "^4.3.4"
+  }
+}
