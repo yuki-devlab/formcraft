@@ -1,3 +1,21 @@
 @import "tailwindcss";
 
 @source "../../../templates/**/*.html";
+
+@theme {
+    --font-sans:
+        "Inter",
+        "Noto Sans JP",
+        system-ui,
+        sans-serif;
+}
+
+@utility text-trim {
+    text-box: trim-both cap alphabetic;
+}
+
+@utility text-trim-safe {
+    text-box: trim-both cap alphabetic;
+    padding-block: 3px;
+    margin-block: -3px;
+}
