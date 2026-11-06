@@ -4,98 +4,36 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>FormCraft</title>
+        <title>FormCraft | Googleフォーム自動作成ツール</title>
 
         <link rel="icon" href="{% static 'form_builder/images/favicon.ico' %}">
         <link rel="icon" href="{% static 'form_builder/images/favicon.svg' %}" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="{% static 'form_builder/images/apple-touch-icon.png' %}" sizes="180x180">
+        <link rel="apple-touch-icon" href="{% static 'form_builder/images/apple-touch-icon.png' %}">
         <link rel="stylesheet" href="{% static 'form_builder/css/output.css' %}">
     </head>
     <body class="min-h-screen bg-slate-50 font-sans text-slate-800">
         <div class="flex justify-center px-4 pt-12 pb-10 min-h-screen md:px-8 md:pt-20 lg:px-0">
             <div class="flex flex-col gap-10 w-full lg:max-w-3xl">
-                <div class="flex flex-col gap-6">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 1496.571 254.106"
-                        class="h-9 self-start"
-                    >
-                        <g id="logo-mark">
-                            <g>
-                            <path d="M218.94,239.631c-2.165,7.961-10.686,14.474-18.936,14.474H48.646c-8.25,0-13.229-6.514-11.064-14.474L85.974,61.662c2.165-7.961,10.686-14.474,18.936-14.474h151.358c8.25,0,13.229,6.514,11.064,14.474l-48.392,177.97Z" fill="#62748e"/>
-                            <g opacity=".25">
-                                <path d="M141.683,109.021c-.678,2.665-3.483,4.845-6.233,4.845h-38.704c-2.75,0-4.445-2.18-3.767-4.845l8.023-31.519c.678-2.665,3.483-4.845,6.233-4.845h38.704c2.75,0,4.445,2.18,3.767,4.845l-8.023,31.519Z" fill="#fff"/>
-                                <line x1="90.09" y1="129.412" x2="226.334" y2="129.412" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="165.478" y1="75.576" x2="241.613" y2="75.576" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="155.062" y1="110.67" x2="231.747" y2="110.67" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="160.671" y1="93.262" x2="236.805" y2="93.262" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="84.146" y1="147.243" x2="222.061" y2="147.243" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="79.141" y1="165.074" x2="216.933" y2="165.074" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <path d="M201.331,231.95c-.71,2.657-3.541,4.83-6.291,4.83H62.785c-2.75,0-4.419-2.174-3.709-4.83l12.317-46.085c.71-2.657,3.541-4.83,6.291-4.83h132.255c2.75,0,4.419,2.174,3.709,4.83l-12.317,46.085Z" fill="#fff"/>
-                            </g>
-                            </g>
-                            <g>
-                            <g>
-                                <path d="M30.109,228.012c-3.193,0-5.839-1.161-7.452-3.271-1.612-2.108-2.038-4.967-1.2-8.048L69.849,38.724c1.862-6.846,9.429-12.63,16.523-12.63h151.358c3.193,0,5.84,1.161,7.452,3.27s2.038,4.967,1.2,8.048l-48.392,177.969c-1.861,6.847-9.428,12.631-16.523,12.631H30.109Z" fill="#90a1b9"/>
-                                <path d="M237.73,28.594c2.396,0,4.337.813,5.465,2.288,1.128,1.476,1.403,3.562.774,5.874l-48.392,177.97c-1.562,5.746-8.156,10.786-14.111,10.786H30.108c-2.396,0-4.337-.813-5.465-2.288-1.128-1.476-1.403-3.562-.774-5.874L72.261,39.38c1.562-5.746,8.156-10.786,14.111-10.786h151.358ZM237.73,23.594H86.372c-8.25,0-16.771,6.513-18.936,14.474L19.044,216.038c-2.165,7.961,2.814,14.474,11.064,14.474h151.358c8.25,0,16.771-6.513,18.936-14.474l48.392-177.97c2.165-7.961-2.814-14.474-11.064-14.474h0Z" fill="#fff"/>
-                            </g>
-                            <g opacity=".5">
-                                <path d="M123.442,85.312c-.678,2.665-3.483,4.845-6.233,4.845h-38.704c-2.75,0-4.445-2.18-3.767-4.845l8.023-31.519c.678-2.665,3.483-4.845,6.233-4.845h38.704c2.75,0,4.445,2.18,3.767,4.845l-8.023,31.519Z" fill="#fff"/>
-                                <line x1="71.849" y1="105.702" x2="208.094" y2="105.702" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="147.238" y1="51.866" x2="223.373" y2="51.866" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="136.822" y1="86.961" x2="213.507" y2="86.961" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="142.431" y1="69.552" x2="218.565" y2="69.552" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="65.906" y1="123.533" x2="203.821" y2="123.533" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="60.901" y1="141.364" x2="198.693" y2="141.364" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <path d="M183.091,208.241c-.71,2.657-3.541,4.83-6.291,4.83H44.545c-2.75,0-4.419-2.174-3.709-4.83l12.317-46.085c.71-2.657,3.541-4.83,6.291-4.83h132.255c2.75,0,4.419,2.174,3.709,4.83l-12.317,46.085Z" fill="#fff"/>
-                            </g>
-                            </g>
-                            <g>
-                            <g>
-                                <path d="M11.571,204.418c-3.193,0-5.84-1.161-7.452-3.27-1.612-2.109-2.038-4.968-1.2-8.049L51.311,15.13c1.861-6.846,9.428-12.63,16.523-12.63h151.358c3.193,0,5.84,1.161,7.452,3.27s2.038,4.967,1.2,8.048l-48.392,177.969c-1.861,6.847-9.428,12.631-16.523,12.631H11.571Z" fill="#cad5e2"/>
-                                <path d="M219.192,5c2.396,0,4.337.813,5.465,2.288,1.128,1.476,1.403,3.562.774,5.874l-48.392,177.97c-1.562,5.746-8.156,10.786-14.111,10.786H11.571c-2.396,0-4.337-.813-5.465-2.288-1.128-1.476-1.403-3.562-.774-5.874L53.723,15.786c1.562-5.746,8.156-10.786,14.111-10.786h151.358ZM219.192,0H67.834C59.584,0,51.063,6.513,48.899,14.474L.506,192.444c-2.165,7.961,2.814,14.474,11.064,14.474h151.358c8.25,0,16.771-6.514,18.936-14.474L230.257,14.474C232.421,6.513,227.442,0,219.192,0h0Z" fill="#fff"/>
-                            </g>
-                            <g>
-                                <path d="M106.125,59.958c-.678,2.665-3.483,4.845-6.233,4.845h-38.704c-2.75,0-4.445-2.18-3.767-4.845l8.023-31.519c.678-2.665,3.483-4.845,6.233-4.845h38.704c2.75,0,4.445,2.18,3.767,4.845l-8.023,31.519Z" fill="#fff"/>
-                                <line x1="54.532" y1="80.349" x2="190.777" y2="80.349" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="129.921" y1="26.512" x2="206.055" y2="26.512" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="119.504" y1="61.607" x2="196.189" y2="61.607" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="125.113" y1="44.198" x2="201.247" y2="44.198" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="48.588" y1="98.179" x2="186.503" y2="98.179" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <line x1="43.583" y1="116.01" x2="181.376" y2="116.01" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5"/>
-                                <path d="M165.773,182.887c-.71,2.657-3.541,4.83-6.291,4.83H27.227c-2.75,0-4.419-2.174-3.709-4.83l12.317-46.085c.71-2.657,3.541-4.83,6.291-4.83h132.255c2.75,0,4.419,2.174,3.709,4.83l-12.317,46.085Z" fill="#fff"/>
-                            </g>
-                            </g>
-                        </g>
-                        <g id="logo-wordmark">
-                            <g id="word-form" fill="#031740">
-                            <path d="M333.755,40.763v181.378h37.465v-73.939h68.388v-35.086h-68.388v-36.672h90.59v-35.681s-128.055-.595-128.055,0Z"/>
-                            <path d="M520.721,80.227c-40.854,0-73.973,33.119-73.973,73.973s33.119,73.973,73.973,73.973,73.973-33.119,73.973-73.973-33.119-73.973-73.973-73.973ZM520.721,189.683c-19.597,0-35.483-15.886-35.483-35.483s15.886-35.483,35.483-35.483,35.483,15.886,35.483,35.483-15.886,35.483-35.483,35.483Z"/>
-                            <path d="M602.169,222.165h38.654v-91.035c.09-.949.586-5.088,4.163-8.276,3.126-2.787,6.661-3.113,7.731-3.172h23.787l13.083-33.5h-54.512c-2.253-.104-12.976-.359-22.201,7.731-10.067,8.828-10.609,20.803-10.666,22.796-.013,35.152-.026,70.304-.039,105.457Z"/>
-                            <path d="M695.138,86.151v136.013h38.456c0-27.362,0-54.724,0-82.085.328-2.454,1.519-8.754,6.74-13.46,7.771-7.006,21.344-7.663,28.941-.396,4.719,4.514,5.555,10.577,5.749,13.05v82.892h38.654v-82.076c.547-2.37,2.695-10.304,10.11-15.055,8.707-5.58,21.96-5.031,28.545,2.775,3.486,4.133,4.071,9.076,4.163,11.67,0,27.562,0,55.124,0,82.686h38.654v-102.285c-.111-4.512-.962-11.453-5.154-18.039-11.832-18.589-42.976-22.871-64.027-12.092-9.577,4.904-15.414,12.079-18.435,16.453-1.912-3.266-10.442-17.001-27.554-21.607-16.729-4.503-35.136,1.474-47.574,15.264v-13.707s-37.267.367-37.267,0Z"/>
-                            </g>
-                            <g id="word-craft" fill="#362cf9">
-                            <path d="M1044.613,98.867l29.734-21.21c-4.058-6.414-11.504-16.364-23.787-24.778-21.556-14.767-43.582-14.918-50.944-14.867-41.584.288-67.744,28.895-70.767,32.311-5.075,5.734-23.51,27.966-23.986,61.649-.106,7.526.448,32.326,17.642,56.297,4.591,6.401,17.214,23.496,41.231,32.311,25.093,9.21,46.763,3.556,53.918,1.586,31.034-8.545,47.59-30.713,52.134-37.267l-26.562-22.4c-1.094,1.835-16.276,26.352-44.403,27.157-19.671.563-33.158-10.83-37.267-14.669-.941-.879-18.577-17.899-17.444-43.412,1.191-26.838,22.823-55.852,52.53-57.288,28.127-1.36,46.307,22.338,47.971,24.58Z"/>
-                            <path d="M1077.122,222.759h37.267v-89.995c.067-1.016.451-5.021,3.766-8.326,3.666-3.654,8.217-3.763,9.118-3.766h30.527l19.624-33.699h-60.657c-3.617.281-15.524,1.659-25.968,11.299-11.264,10.397-13.185,23.351-13.583,26.761-.031,32.575-.063,65.151-.094,97.726Z"/>
-                            <path d="M1271.186,86.974v11.101c-7.322-5.535-21.947-14.764-41.047-14.867-35.145-.19-74.986,30.574-74.321,73.344.654,42.036,40.091,73.53,74.149,70.965,16.7-1.258,29.269-10.491,36.263-16.849.132,4.361.264,8.722.396,13.083h38.06V86.974h-33.5ZM1230.845,189.652c-19.76,0-35.778-16.019-35.778-35.778s16.019-35.778,35.778-35.778,35.778,16.019,35.778,35.778-16.019,35.778-35.778,35.778Z"/>
-                            <path d="M1328.077,223.156h39.249v-103.078h39.844v-33.5h-40.24c-.085-.894-1.296-15.898,8.325-22.4,3.906-2.64,8.613-3.212,9.911-3.37,5.269-.641,9.494.563,13.083,1.586,3.855,1.098,6.886,2.499,8.92,3.568,5.748-9.779,11.497-19.558,17.246-29.338-4.228-2.737-23.238-14.384-47.773-9.515-5.203,1.033-22.44,4.729-35.483,20.814-13.043,16.085-13.197,33.838-13.083,38.654h-15.065v33.302h15.462c-.132,34.425-.264,68.851-.396,103.276Z"/>
-                            <path d="M1423.226,67.151l38.456-20.021v39.447h34.888v33.699h-34.69v54.116c.088,1.193.59,6.149,4.757,10.11,3.618,3.439,7.791,4.029,9.118,4.163h20.814v35.284h-26.959c-4.783-.315-16.777-1.763-27.95-10.704-16.398-13.123-18.276-32.182-18.558-35.681.041-36.804.082-73.608.123-110.412Z"/>
-                            </g>
-                        </g>
-                    </svg>
+                <header class="flex flex-col gap-6">
+                    <h1 class="self-start">
+                        <img
+                            src="{% static 'form_builder/images/logo.svg' %}"
+                            alt="FormCraft"
+                            class="h-9 w-auto self-start"
+                        >
+                    </h1>
                     <p class="text-trim text-slate-500">
                        必要な情報を入力するだけで、Googleフォーム・Googleスプレッドシートの作成からメール通知の設定まで、すべてを自動で行います。
                     </p>
-                </div>
-                <div class="flex flex-col gap-8">
+                </header>
+                <main class="flex flex-col gap-8">
                     <form
-                        method="post"
                         id="builder-form"
+                        method="post"
                         data-has-result="{{ result|yesno:'true,false' }}"
                         class="flex flex-col gap-8 p-6 rounded-3xl bg-white border border-slate-200 md:p-8"
                     >
                         {% csrf_token %}
-
                         <div class="flex flex-col gap-3 pb-8 border-b border-slate-200">
                             <div class="flex items-center gap-2">
                                 <span class="flex w-7 h-7 items-center justify-center rounded-full bg-slate-300 font-bold text-trim text-white">
@@ -178,8 +116,8 @@
                             </div>
                         </div>
                         <button
-                            type="submit"
                             id="submit-button"
+                            type="submit"
                             disabled
                             class="cursor-pointer flex items-center justify-center h-14 gap-2 rounded-xl bg-sky-500 font-bold enabled:hover:bg-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
@@ -196,7 +134,7 @@
                         </button>
                     </form>
                     {% if result %}
-                        <div class="flex flex-col gap-8 p-6 rounded-3xl bg-white border border-slate-200 md:p-8">
+                        <section class="flex flex-col gap-8 p-6 rounded-3xl bg-white border border-slate-200 md:p-8">
                             <div class="flex flex-col gap-3 pb-8 border-b border-slate-200">
                                 <div class="flex items-center gap-2">
                                     <span class="flex w-7 h-7 items-center justify-center rounded-full bg-slate-300 font-bold text-trim text-white">
@@ -210,61 +148,69 @@
                                     以下のリンクから、作成されたGoogleフォームやGoogleスプレッドシートなどを確認できます。
                                 </p>
                             </div>
-                            <div class="flex flex-col gap-4">
-                                <a
-                                    href="{{ result.form_url }}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="flex flex-col gap-3 p-5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 transition-colors"
-                                >
-                                    <span class="font-bold text-trim">
-                                        Googleフォーム
-                                    </span>
-                                    <span class="text-xs truncate text-slate-500 text-trim-safe">
-                                        {{ result.form_url }}
-                                    </span>
-                                </a>
-                                <a
-                                    href="{{ result.edit_url }}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="flex flex-col gap-3 p-5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 transition-colors"
-                                >
-                                    <span class="font-bold text-trim">
-                                        Googleフォーム（編集）
-                                    </span>
-                                    <span class="text-xs truncate text-slate-500 text-trim-safe">
-                                        {{ result.edit_url }}
-                                    </span>
-                                </a>
-                                {% if result.spreadsheet_url %}
+                            <ul class="flex flex-col gap-4">
+                                <li>
                                     <a
-                                        href="{{ result.spreadsheet_url }}"
+                                        href="{{ result.form_url }}"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         class="flex flex-col gap-3 p-5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 transition-colors"
                                     >
                                         <span class="font-bold text-trim">
-                                            Googleスプレッドシート
+                                            Googleフォーム
                                         </span>
                                         <span class="text-xs truncate text-slate-500 text-trim-safe">
-                                            {{ result.spreadsheet_url }}
+                                            {{ result.form_url }}
                                         </span>
                                     </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="{{ result.edit_url }}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="flex flex-col gap-3 p-5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 transition-colors"
+                                    >
+                                        <span class="font-bold text-trim">
+                                            Googleフォーム（編集）
+                                        </span>
+                                        <span class="text-xs truncate text-slate-500 text-trim-safe">
+                                            {{ result.edit_url }}
+                                        </span>
+                                    </a>
+                                </li>
+                                {% if result.spreadsheet_url %}
+                                    <li>
+                                        <a
+                                            href="{{ result.spreadsheet_url }}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="flex flex-col gap-3 p-5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 transition-colors"
+                                        >
+                                            <span class="font-bold text-trim">
+                                                Googleスプレッドシート
+                                            </span>
+                                            <span class="text-xs truncate text-slate-500 text-trim-safe">
+                                                {{ result.spreadsheet_url }}
+                                            </span>
+                                        </a>
+                                    </li>
                                 {% endif %}
-                            </div>
+                            </ul>
                             <a
                                 href="{% url 'builder' %}"
                                 class="flex h-14 items-center justify-center rounded-xl bg-slate-200 font-bold text-trim hover:bg-slate-300/75 transition-colors"
                             >
                                 新しいフォームを作成する
-                        </a>
-                        </div>
+                            </a>
+                        </section>
                     {% endif %}
-                </div>
-                <small class="text-center text-xs text-trim text-slate-500">
-                    &copy; 2026 FormCraft
-                </small>
+                </main>
+                <footer class="text-center">
+                    <small class="text-xs text-trim text-slate-500">
+                        &copy; 2026 FormCraft
+                    </small>
+                </footer>
             </div>
         </div>
 
@@ -273,11 +219,6 @@
             const button = document.querySelector("#submit-button");
             const label = document.querySelector("#submit-label");
             const spinner = document.querySelector("#submit-spinner");
-
-            const requiredFields = [
-                document.querySelector("#form-name"),
-                document.querySelector("#notification-emails"),
-            ];
 
             function updateSubmitButton() {
                 const emails = document
